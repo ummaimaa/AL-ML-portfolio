@@ -1,4 +1,5 @@
-name: Deploy React Site to Pages
+
+name: Deploy AI-ML Portfolio
 
 on:
   push:
@@ -26,14 +27,15 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          cache-dependency-path: package-lock.json
+          # Points to the lock file inside the specific folder
+          cache-dependency-path: ai-ml/app/package-lock.json
 
       - name: Install dependencies
-        working-directory: app
+        working-directory: ai-ml/app
         run: npm install
 
       - name: Build
-        working-directory: app 
+        working-directory: ai-ml/app 
         run: npm run build
 
       - name: Setup Pages
@@ -42,8 +44,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ai-ml/app/dist/
-          path: app/dist/
+          # ONLY ONE PATH HERE - Use the built dist folder
+          path: 'ai-ml/app/dist/'
 
       - name: Deploy to GitHub Pages
         id: deployment
