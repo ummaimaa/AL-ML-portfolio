@@ -27,8 +27,8 @@ jobs:
         with:
           node-version: 20
           cache: 'npm'
-          # Points to the lock file inside the specific folder
-          cache-dependency-path: ai-ml/app/package-lock.json
+          # Path must point to the lock file inside your subfolders
+          cache-dependency-path: ai-ml/app/package-lock.json 
 
       - name: Install dependencies
         working-directory: ai-ml/app
